@@ -1,11 +1,27 @@
-node {
-	stage('Build') {
-		echo "Build"
-	}
-	stage('Test') {
-		echo "Test"
-	}
-	stage('package') {
-		echo "package"
+pipeline {
+    agent any
+    stages {
+		stage('Build') {
+			steps{
+			      echo "Build"
+			}
+	        }
+                stage('Test') {
+                        steps{
+                              echo "Test"
+                        }
+                }
+                stage('deploy') {
+                        steps{
+                              echo "deploy"
+                        }
+                }
+
+	} 
+	
+	post {
+	   success {
+	       echo "I run when succeded"
+	   }
 	}
 }
